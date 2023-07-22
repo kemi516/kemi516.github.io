@@ -1,0 +1,557 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+button {
+  transition: all 2s;
+  display: block;
+  background: red;
+  border-radius: 30px;
+  border: 0;
+  color: white;
+  padding: 10px 30px;
+}
+button:hover {
+  background: rgba(217, 21, 21, 0.656);
+}
+h1,
+h3 {
+  font-weight: 900;
+}
+.cl::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+img {
+  width: 100%;
+}
+.box {
+  background: red;
+  margin-top: 10px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box p {
+  transition: all 1s;
+  transform-origin: 0% 50%;
+  margin: 3px;
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  /* background-color: #000; */
+}
+.box .click p:nth-child(1) {
+  /* background: pink; */
+  transform: rotate(45deg);
+}
+.box .click p:nth-child(3) {
+  position: relative;
+  top: 5px;
+  /* background: pink; */
+  transform: rotate(-45deg);
+}
+.box .click p:nth-child(2) {
+  opacity: 0;
+}
+.clicks {
+  overflow: hidden;
+  position: absolute;
+  top: 77px;
+  height: 0;
+  transition: all 2s;
+  color: #000 !important;
+  text-align: center;
+  width: 100%;
+  background: #fff;
+}
+.clicks p {
+  cursor: pointer;
+}
+.clicks p:nth-child(1) {
+  margin-top: 33px;
+}
+.clicks p:hover {
+  color: red;
+}
+.searchs {
+  height: 40px;
+  top: 0px;
+  right: 15px;
+  font-size: 12px;
+  border-radius: 0 30px 30px 0;
+  text-align: center;
+  position: relative;
+}
+.searchs input {
+  width: 100%;
+  height: 40px;
+  background-color: rgba(221, 221, 221, 0.731);
+  border: 0;
+  border-radius: 30px;
+  outline: 0;
+  padding-left: 20px;
+}
+.searchs i {
+  display: inline-block;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  font-size: 23px;
+  color: #fff;
+  background-color: red;
+  width: 40px;
+  border-radius: 0 30px 30px 0;
+  text-align: center;
+  line-height: 40px;
+}
+header {
+  background-image: url(image/b2.jpg);
+  height: 800px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+header .content {
+  margin-top: 20rem;
+}
+header .content button {
+  background: rgba(255, 255, 255, 0.273);
+  border: 0;
+  border-radius: 30px;
+  padding: 15px 30px;
+}
+header .content h1 {
+  color: #EEEEEE;
+  text-transform: uppercase;
+  word-spacing: 20px;
+  margin: 30px 0;
+}
+header .content h1 small {
+  font-size: 36px;
+  color: #EEEEEE;
+}
+header .content .but {
+  background-color: red;
+  transition: all 2s;
+}
+header .content .but:hover {
+  background-color: #ff8c00;
+}
+header .bgi {
+  background-color: rgba(0, 0, 0, 0.558);
+  height: 100%;
+}
+header .nav {
+  line-height: 40px;
+  color: white;
+  font-weight: bolder;
+}
+header .nav .topnav {
+  z-index: 999;
+  width: 100vw;
+  color: #000;
+}
+header .nav .topnav h1 {
+  margin-top: 12px;
+}
+header .nav .topnav .list {
+  line-height: 70px;
+}
+header .nav .item {
+  transition: all 2s;
+  cursor: pointer;
+}
+header .nav .item:hover {
+  color: red;
+}
+header .nav input {
+  width: 100%;
+  height: 40px;
+  background-color: rgba(221, 221, 221, 0.731);
+  border: 0;
+  border-radius: 30px;
+  outline: 0;
+  padding-left: 20px;
+}
+header .nav input::-webkit-input-placeholder {
+  color: #EEEEEE;
+}
+header .nav .search {
+  height: 40px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 12px;
+  background-color: red;
+  width: 40px;
+  border-radius: 0 30px 30px 0;
+  text-align: center;
+}
+header .nav .search i {
+  position: relative;
+  top: -11px;
+  right: 3px;
+}
+header .nav .icon {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  height: 70px;
+  transition: all 2s;
+  cursor: pointer;
+}
+header .nav .icon i {
+  height: 25px;
+}
+header .nav .icon:hover {
+  color: red;
+}
+.offering .container {
+  margin-top: 100px;
+}
+.offering .container h1 {
+  text-align: center;
+  margin-bottom: 66px;
+}
+.offering .container h1 small {
+  font-size: 36px;
+}
+.offering .container .ig {
+  position: relative;
+}
+.offering .container .ig .d {
+  margin-top: 30px;
+  position: relative;
+  height: 100%;
+}
+.offering .container .ig .d .bgi {
+  transition: all 1s;
+  transform: scale(0);
+  color: white;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: rgba(217, 21, 21, 0.656);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.offering .container .ig .d .bgi > div {
+  width: 80%;
+}
+.offering .container .ig .d:hover .bgi {
+  transform: scale(1);
+}
+.offering .container .ig .d:hover .j {
+  opacity: 0;
+}
+.offering .container .ig img {
+  border-radius: 10px;
+  width: 100%;
+}
+.offering .container .ig .j {
+  transition: all 1s;
+  position: absolute;
+  bottom: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 0 0 0 10px;
+  background: red;
+  text-align: center;
+}
+.offering .container .ig .j i {
+  color: white;
+  font-size: 20px;
+  line-height: 30px;
+}
+.offering .container button {
+  transition: all 2s;
+  display: block;
+  margin: 100px auto;
+  background: red;
+  border-radius: 30px;
+  border: 0;
+  color: white;
+  padding: 10px 30px;
+}
+.offering .container button:hover {
+  background: rgba(217, 21, 21, 0.656);
+}
+.clients {
+  padding: 60px;
+  background-color: #FAFAFB;
+  margin-bottom: 66px;
+}
+.clients h1 {
+  text-align: center;
+  font-weight: 900;
+  margin-bottom: 36px;
+}
+.clients h1 small {
+  font-size: 36px;
+  margin-right: 13px;
+}
+.clients .items > div > .item {
+  margin-top: 33px;
+  transition: all 2s;
+  padding: 20px;
+  box-shadow: 0 0 3px;
+}
+.clients .items > div > .item:hover {
+  box-shadow: 0 0 20px;
+}
+.clients .items > div > .item:hover .num {
+  opacity: 1;
+}
+.clients .items > div > .item .icon {
+  color: red;
+  font-size: 30px;
+}
+.clients .items > div > .item .num {
+  transition: all 2s;
+  font-size: 30px;
+  color: #898686;
+  font-weight: 900;
+  opacity: 0.5;
+}
+.clients .items > div > .item h3 {
+  transition: all 2s;
+}
+.clients .items > div > .item h3:hover {
+  color: red;
+}
+.clients .items > div > .item h4 a {
+  color: #000;
+  border-bottom: 2px solid red;
+  text-decoration: none;
+}
+.years {
+  margin-bottom: 100px;
+}
+.years .left {
+  padding: 0 30px;
+}
+.years .left p {
+  margin-bottom: 30px;
+}
+.years .left h1 {
+  margin-bottom: 30px;
+}
+.years .left h1 small {
+  font-size: 36px;
+}
+.years .left button {
+  transition: all 2s;
+  display: block;
+  background: red;
+  border-radius: 30px;
+  border: 0;
+  color: white;
+  padding: 10px 30px;
+  margin-bottom: 30px;
+}
+.years .left button:hover {
+  background: rgba(217, 21, 21, 0.656);
+}
+.years .cr .right {
+  border-radius: 10px;
+  border: 10px solid #EEEEEE;
+}
+.years .cr .right img {
+  border-radius: 10px;
+  position: relative;
+  top: 20px;
+  left: -30px;
+}
+.deliver {
+  background: url(image/bg2.jpg) no-repeat center / cover;
+  height: 400px;
+  color: white;
+}
+.deliver small {
+  font-size: 36px;
+  color: white;
+}
+.deliver .x-m {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.509);
+  position: relative;
+}
+.deliver .x-m .container {
+  height: 100%;
+}
+.deliver .x-m .container .row {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.works .row .left {
+  padding: 3rem;
+  box-sizing: border-box;
+}
+.works .row .right img {
+  width: 100%;
+}
+.styles {
+  background-color: #FAFAFB;
+}
+.styles .row {
+  height: 400px;
+}
+.styles .row .item {
+  height: 100%;
+  overflow: hidden;
+  color: #000;
+}
+.styles .row .item img {
+  width: 100%;
+}
+.styles .row .item .our {
+  margin-top: 150px;
+  align-items: center;
+  text-align: center;
+}
+.styles .row .item .our .icon {
+  color: red;
+}
+.posts .container h1 {
+  margin: 100px 0 30px 0;
+  text-align: center;
+}
+.posts .container h1 small {
+  margin-right: 23px;
+  font-size: 36px;
+}
+.posts .container .row {
+  margin-bottom: 100px;
+}
+.posts .container .row .item1 {
+  margin-top: 33px;
+  transition: all 2s;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 0 3px;
+  font-size: 12px;
+}
+.posts .container .row .item1 .img {
+  border-radius: 10px 10px 0 0;
+  transition: all 2s;
+  position: relative;
+  overflow: hidden;
+}
+.posts .container .row .item1 .bgi {
+  transition: all 2s;
+  position: absolute;
+  border-radius: 10px 10px 0 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.posts .container .row .item1 .bgi i {
+  transform: scale(0);
+  transition: all 2s;
+  color: white;
+}
+.posts .container .row .item1 img {
+  border-radius: 10px 10px 0 0;
+  transition: all 2s;
+}
+.posts .container .row .item1:hover .bgi {
+  background: rgba(194, 23, 23, 0.628);
+}
+.posts .container .row .item1:hover .bgi i {
+  transform: scale(1);
+}
+.posts .container .row .item1:hover img {
+  transform: scale(1.2);
+}
+.posts .container .row .item1 .tt {
+  padding: 20px 0;
+}
+.posts .container .row .item1 span {
+  color: red;
+}
+.posts .container .row .item1 .sp,
+.posts .container .row .item1 h3 {
+  transition: all 2s;
+  cursor: pointer;
+}
+.posts .container .row .item1 .sp:hover:hover,
+.posts .container .row .item1 h3:hover:hover {
+  color: red;
+}
+.posts .container .row .item1 .bottom {
+  padding: 10px;
+}
+.posts .container .row .item1 .bottom .pb {
+  width: 60px;
+  border-bottom: 2px solid red;
+}
+footer {
+  background-image: url(image/footer.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+footer .icon {
+  display: flex;
+}
+footer .icon > div {
+  margin-right: 20px;
+}
+footer .icon > div i {
+  color: white;
+}
+footer .bg {
+  color: white;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.528);
+}
+footer .bg .container .rtop {
+  margin-top: 150px;
+}
+footer .bg .container .rtop h1 small {
+  color: white;
+}
+footer .bg .container .rtop .up {
+  line-height: 36px;
+}
+footer .bg .foot {
+  text-align: center;
+  margin: 33px;
+}
+footer .bg .item {
+  line-height: 30px;
+}
+footer p {
+  margin-bottom: 22px;
+}
+.mao {
+  display: block;
+  background: #F54748;
+  border-radius: 50%;
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  bottom: 20px;
+  right: 10px;
+  text-align: center;
+  line-height: 50px;
+}
+.mao i {
+  position: relative;
+  top: 8px;
+  color: white;
+}
+/*# sourceMappingURL=./index.css.map */

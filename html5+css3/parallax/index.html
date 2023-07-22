@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视差</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        transform: scaleX(1.25);
+        overflow: hidden;
+    }
+
+    .box {
+        width: 100%;
+        transition: all 3s;
+
+        height: 100vh;
+        background-color: #fed8c1;
+    }
+
+    .box>div {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+
+    .lay1 {
+        background-color: #fed8c1;
+
+    }
+
+    .lay2 {
+        background-image: url(./image/lay2.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+    }
+
+    .lay3 {
+        background-image: url(./image/lay3.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+    }
+
+    .lay4 {
+        background-image: url(./image/lay4.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+    }
+
+    .lay5 {
+        background-image: url(./image/lay5.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+    }
+
+    .lay6 {
+        background-image: url(./image/lay6.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+    }
+
+    .lay7 {
+        background-image: url(./image/lay7.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+    }
+
+    .lay8 {
+        background-image: url(./image/lay8.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+    }
+
+    @keyframes top {
+        0% {
+            -webkit-transform: translateY(-1000px);
+            transform: translateY(-1000px);
+            opacity: 0;
+        }
+
+        100% {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+</style>
+
+<body>
+
+    <div class="box">
+        <div class="lay1"></div>
+        <div class="lay2"></div>
+        <div class="lay3"></div>
+        <div class="lay4"></div>
+        <div class="lay5"></div>
+        <div class="lay6"></div>
+        <div class="lay7"></div>
+        <div class="lay8"></div>
+
+    </div>
+    <script>
+        var divs = document.querySelectorAll(".box>div")
+        document.body.onmousemove = function (e) {
+            var width = window.innerWidth / 2;
+            // let mouseMoved = ((width - e.pageX));
+            // divs.forEach(function (de, i) {
+            //     console.log(de)
+            //     de.style.transform = "translateX(" + mouseMoved / ((i - 5) * 16) + "px)"
+            // })
+            let mouseMoved2 = ((width - e.pageX) / 50);
+            let mouseMoved3 = ((width - e.pageX) / 40);
+            let mouseMoved4 = ((width - e.pageX) / 30);
+            let mouseMoved5 = ((width - e.pageX) / 20);
+            let mouseMoved6 = ((width - e.pageX) / 10);
+            let mouseMoved7 = ((width - e.pageX) / 5);
+
+            divs[2].style.transform = "translateX(" + mouseMoved2 + "px)";
+            divs[3].style.transform = "translateX(" + mouseMoved3 + "px)";
+            divs[4].style.transform = "translateX(" + mouseMoved4 + "px)";
+            divs[5].style.transform = "translateX(" + mouseMoved5 + "px)";
+            divs[6].style.transform = "translateX(" + mouseMoved6 + "px)";
+            divs[7].style.transform = "translateX(" + mouseMoved7 + "px)";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手风琴</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+        .imgs div {
+            width: 50px;
+            height: 300px;
+            box-shadow: 0 0 22px gray;
+
+        }
+
+        .imgs {
+
+            background: rgba(0, 0, 0, 0.403);
+        }
+
+        body {
+            margin: 0;
+            background: url("./image/2.webp") no-repeat center/cover
+        }
+
+        .box .imgs {
+
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .imgs .div1 {
+            background: url("./image/5.webp") no-repeat center/cover;
+        }
+
+        .imgs .div2 {
+            background: url("./image/12.webp") no-repeat center/cover;
+        }
+
+        .imgs .div3 {
+            width: 500px;
+            background: url("./image/2.webp") no-repeat center/cover;
+        }
+
+        .imgs .div4 {
+            background: url("./image/8.webp") no-repeat center/cover;
+        }
+
+        .imgs .div5 {
+            background: url("./image/19.webp") no-repeat center/cover;
+        }
+
+        .imgs .div6 {
+            background: url("./image/20.webp") no-repeat center/cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="imgs">
+            <div class="div1"></div>
+            <div class="div2"></div>
+            <div class="div3"></div>
+            <div class="div4"></div>
+            <div class="div5"></div>
+            <div class="div6"></div>
+        </div>
+    </div>
+    <script>
+        $(".imgs div").click(function () {
+            $(".imgs div").eq($(this).index()).css({ width: 500 }).siblings().css({ width: 50 })
+            var bg = $(".imgs div").eq($(this).index()).css("background")
+            $("body").css({ background: bg })
+        })
+    </script>
+</body>
+
+</html>

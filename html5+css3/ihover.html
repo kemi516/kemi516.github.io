@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hover</title>
+    <style>
+        .container {
+            padding: 10px;
+            box-shadow: 0px 0px 3px #333333;
+            display: flex;
+            margin-right: 33px;
+        }
+
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+
+            width: 400px;
+            height: 280px;
+            /* background: pink; */
+            position: relative;
+            perspective: 500px;
+            z-index: 999;
+        }
+
+        .box>div {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+        }
+
+        .box>div img {
+            width: 100%;
+            height: 100%;
+        }
+
+        @keyframes kk {
+            from {
+                opacity: 1;
+                transform: rotateY(0deg);
+            }
+
+            to {
+                transform: rotateY(-90deg);
+                opacity: 0;
+
+            }
+        }
+
+        @keyframes kk2 {
+            from {
+                opacity: 0;
+                transform: rotateY(90deg);
+            }
+
+            to {
+                transform: rotateY(0deg);
+                opacity: 1;
+
+            }
+        }
+
+        .boxx:hover .boxx1 {
+            animation-name: kk;
+
+        }
+
+        .boxx:hover .boxx2 {
+            animation-name: kk2;
+        }
+
+        .boxx1 {
+            transform-origin: right;
+        }
+
+        .box1 {
+
+            animation-duration: 0.6s;
+            animation-fill-mode: forwards;
+        }
+
+        .box2 {
+            transform-origin: left;
+            animation-duration: 0.6s;
+            animation-fill-mode: forwards;
+            background: #333333;
+            animation-delay: 0.6s;
+            opacity: 0;
+            transform: rotateY(90deg);
+        }
+
+        .box2>div.title {
+            color: white;
+            margin-top: 50px;
+            background: #000;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box2>div.text {
+            color: #B6B6B6;
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box boxx">
+            <div class="box1 boxx1"><img src="http://gudh.github.io/ihover/dist/images/assets/rect/4.jpg" alt=""></div>
+            <div class="box2 boxx2">
+                <div class="title">HEADING HERE </div>
+                <div class="text">Description goes here</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <style>
+            .boxs1 {
+                animation-duration: 1s;
+                transform-origin: top;
+            }
+
+            @keyframes k1 {
+                from {
+                    opacity: 1;
+                    transform: rotateX(0deg);
+                }
+
+                to {
+                    transform: rotateX(180deg);
+
+
+                }
+            }
+
+
+            .boxs:hover .boxs1 {
+                animation-name: k1;
+
+
+            }
+
+            .boxs2 {
+                animation-duration: 2s;
+                position: relative;
+                z-index: -99;
+                transform: rotateY(0deg);
+                opacity: 1;
+            }
+        </style>
+        <div class="box boxs">
+            <div class="box1 boxs1"><img src="http://gudh.github.io/ihover/dist/images/assets/rect/4.jpg" alt=""></div>
+            <div class="box2 boxs2">
+                <div class="title">HEADING HERE </div>
+                <div class="text">Description goes here</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>色卡挑战</title>
+    <style>
+        .box {
+            margin: auto;
+            width: 500px;
+            height: 500px;
+            display: flex;
+            flex-wrap: wrap;
+
+        }
+
+        .box div {
+            background: pink;
+            border-radius: 50%;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1></h1>
+    <div class="box">
+    </div>
+    <script>
+        var leve = 1;
+        function feng(leve) {
+            $("h1").text("当前是第" + leve + "关卡")
+            $(".box").html(" ")
+            var color = "#" + Math.random().toString(16).slice(-6);
+            for (let i = 0; i < Math.pow(leve + 2, 2); i++) {
+                var node = document.createElement("div");
+                node.style.width = 500 / (leve + 2) + "px"
+                node.style.height = 500 / (leve + 2) + "px";
+                node.style.backgroundColor = color;
+                $(".box").append(node);
+            }
+
+
+            var index = Math.floor(Math.random() * ($(".box").children("div").length));
+            $(".box").children("div").eq(index).css('opacity', 0.7);
+            $(".box").children("div").eq(index).click(function () {
+                leve++;
+                feng(leve)
+            })
+            return leve
+        }
+
+        feng(leve);
+    </script>
+</body>
+
+</html>

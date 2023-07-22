@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>记忆卡片</title>
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            width: 500px;
+            height: 500px;
+            background: pink;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+        }
+
+        .box div {
+            /* transition: all 1s; */
+            width: 100px;
+            height: 100px;
+            background: aquamarine;
+            margin: 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: aquamarine;
+            font-size: 2em;
+        }
+
+        .open {
+            color: antiquewhite !important;
+        }
+
+        .bg {
+            color: antiquewhite !important;
+            background: aqua !important;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+    </div>
+    <script>
+        var icons = [
+            "fa-bath",
+            "fa-telegram",
+            "fa-anchor",
+            "fa-battery-quarter",
+            "fa-bank",
+            "fa-bug",
+            "fa-bus",
+            "fa-child",
+        ];
+        kong = []
+        icons.forEach(function (e, i) {
+            kong.push(e);
+            kong.push(e);
+        });
+        kong.sort(function () {
+            return Math.random() - 0.5;
+        })
+        var box = document.querySelector(".box");
+        kong.forEach(function (e, i) {
+            var node = document.createElement("div");
+            node.innerHTML = "<i class='fa " + e + "'></i>"
+            box.appendChild(node);
+            var flag = true;
+            function click() {
+
+                if (!this.classList.contains("bg") && flag) {
+
+                    node.classList.add("open");
+                    var tmp = []
+                    for (let i = 0; i < box.children.length; i++) {
+                        if (box.children[i].classList.contains("open")) {
+                            tmp.push(box.children[i]);
+                        }
+                    }
+                    if (tmp.length == 2) {
+                        flag = false
+                        setTimeout(() => {
+
+                            tmp[0].classList.remove("open")
+                            tmp[1].classList.remove("open")
+                            flag = true
+                        }, 600)
+                        if (tmp[0].innerHTML == tmp[1].innerHTML) {
+                            tmp[0].classList.add("bg")
+                            tmp[1].classList.add("bg")
+
+                        }
+                    }
+                }
+            }
+            node.onclick = click
+        })
+
+    </script>
+</body>
+
+</html>

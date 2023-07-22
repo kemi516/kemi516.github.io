@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>钢琴游戏</title>
+    <link rel="shortcut icon" href="./image/bg.png" type="image/x-icon">
+</head>
+<style>
+    .box {
+        overflow: hidden;
+        position: relative;
+        margin: auto;
+        width: 400px;
+        height: 600px;
+        background-image: url(./image/bg.png);
+        background-size: cover;
+    }
+
+    .box .container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .box .container i {
+        background: url(./image/jingling.png) -98px -62px/596px;
+        display: block;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .box .start {
+        z-index: 9999;
+        width: 400px;
+        height: 600px;
+        background-image: url(./image/bg.png);
+        background-size: cover;
+        /* display: none; */
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .box .start .logo {
+        z-index: 999;
+        position: relative;
+        top: 100px;
+        background: url(./image/jingling.png) -0px -0px;
+        width: 100%;
+        height: 100px;
+    }
+
+    .box .start .go {
+        margin: auto;
+        position: relative;
+        top: 160px;
+        background: url(./image/jingling.png) -404px -0px;
+        width: 94%;
+        height: 135px;
+    }
+
+    .box .start .gq {
+        position: absolute;
+        bottom: 0px;
+        background: url(./image/jingling.png) 2px -480px/614px;
+        width: 100%;
+        height: 103px;
+    }
+
+    .box .end {
+        font-size: 2em;
+
+        display: none;
+        z-index: 999;
+        background: rgba(0, 0, 0, .3);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+
+
+
+    }
+
+    .box .content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        margin: auto;
+        width: 80%;
+        height: 50%;
+        border-radius: 10px;
+        background: #fff;
+    }
+
+    .box .content .ig {
+        background-size: cover;
+        background-image: url(./image/level1.png);
+        width: 100%;
+        height: 72px;
+    }
+
+    .box .container i.click {
+        background-image: url(./image/playing.png);
+        background-size: 50px;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .box .score {
+        width: 100%;
+        position: absolute;
+        z-index: 999;
+        justify-content: center;
+        display: flex;
+        pointer-events: none;
+    }
+
+    .box .score .num {
+        width: 50px;
+        height: 66px;
+        background-image: url(./image/score.png);
+        background-position-x: 0px;
+    }
+</style>
+
+<body>
+    <div class="box">
+        <div class="score">
+            <div class="num"></div>
+        </div>
+        <div class="start">
+            <div class="logo"></div>
+            <div class="go"></div>
+            <div class="gq"></div>
+        </div>
+        <div class="end">
+            <div class="content">
+                <div class="endscore">你的得分是0</div>
+                <div class="ig"></div>
+            </div>
+            <!-- <audio src="./music/sound_1.mp3"></audio> -->
+        </div>
+        <div class="container">
+        </div>
+    </div>
+    <script>
+        var box = document.querySelector(".box");
+        var scoreEl = document.querySelector(".score");
+        var endscore = document.querySelector(".endscore");
+        // console.log(score)
+        var start = document.querySelector(".start");
+        var go = document.querySelector(".go");
+        var end = document.querySelector(".end");
+        var container = document.querySelector(".container");
+        var kong = [];
+        var score = 0;
+        var seep = 0.01;
+        container.onclick = function () {
+            clearInterval(1);
+            endscore.innerHTML = "你的得分是" + score;
+            end.style.display = "block";
+        }
+        go.onclick = function () {
+            start.style.display = "none";
+            // console.log("jj")
+        }
+        var music = [
+            [
+                25, 21, 22, 23, 24, 25, 21, 21, 26, 24, 25, 26, 27, 31, 21, 21, 24, 25, 24, 23, 22, 23, 24, 23, 22, 21, 17,
+                21, 22, 23, 21, 22, 25, 21, 22, 23, 24, 25, 21, 21, 26, 24, 25, 26, 27, 31, 21, 21, 24, 25, 24, 23, 22, 23,
+                24, 23, 22, 21, 22, 23, 22, 21, 17, 21,
+            ],
+            [
+                23, 22, 21, 17, 16, 15, 16, 17, 21, 17, 16, 15, 14, 13, 14, 12, 21, 17, 21, 11, 7, 15, 12, 13, 11, 21, 17, 16,
+                17, 23, 25, 26, 24, 23, 22, 24, 24, 23, 21, 17, 16, 15, 14, 13, 12, 14, 13, 12, 11, 12, 13, 14, 15, 12, 15,
+                14, 13, 16, 15, 14, 15, 14, 13, 12, 11, 6, 16, 17, 21, 17, 16, 15, 14, 13, 12, 16, 15, 16, 15, 14, 13, 23, 22,
+                21, 22, 21, 23, 22, 24, 25, 23, 24, 25, 23, 24, 25, 15, 16, 17, 21, 22, 23, 24, 23, 21, 22, 23, 13, 14, 15,
+                16, 15, 14, 15, 13, 14, 15, 14, 16, 15, 14, 13, 12, 13, 12, 11, 12, 13, 14, 15, 16, 14, 16, 15, 16, 17, 21,
+                15, 16, 17, 21, 22, 23, 24, 25, 23, 21, 22, 23, 22, 21, 22, 17, 21, 22, 23, 22, 21, 17, 21, 16, 17, 21, 11,
+                12, 13, 14, 13, 12, 13, 21, 17, 21, 16, 21, 17, 16, 15, 14, 15, 14, 13, 14, 15, 16, 17, 11, 16, 21, 17, 21,
+                17, 16, 17, 21, 22, 21, 17, 21, 16, 17, 23, 13, 14, 13, 12, 22, 23, 22, 21, 13, 11, 16, 15, 5, 4, 5, 6, 16,
+                17, 16, 17, 5, 4, 5, 6, 16, 15, 16, 17, 17, 16, 17, 11, 21, 22, 21, 17, 7, 11, 7, 6, 16, 15, 16, 17, 7, 13,
+                12, 11, 21, 22, 24, 23, 13, 15, 23, 21, 24, 23, 24, 22, 15, 14, 15, 13, 21, 17, 21, 13, 15, 15, 16, 17, 15,
+                13, 21, 22, 23, 21, 23, 23, 22, 21, 17, 16, 16, 15, 16, 17, 21, 23, 22, 21, 23,
+            ],
+        ];
+        var puzi = music[Math.floor(Math.random() * (music.length))];
+        function Car(y) {
+            this.x = Math.floor(Math.random() * 4);
+            this.y = y;
+            this.node = document.createElement("i");
+            this.update();
+            container.appendChild(this.node);
+            // console.log(this)
+            // console.log(this.node)
+
+            var _this = this;
+            // console.log(kong)
+
+            this.node.onclick = function () {
+
+                // console.log(this===kong[0].node)
+                if (this === kong[0].node) {
+
+                    setInterval(dj, 20);
+                    console.log(11)
+                }
+                var tt = kong.filter(function (e) {
+                    return !e.pding;
+                })[0]
+                // console.log(this,"  ",tt.node)
+                if (this == tt.node) {
+                    score++;
+                    var node = document.createElement("audio");
+                    node.src = "./music/sound_" + _this.music + ".mp3"
+                    node.play()
+                    _this.pding = true;
+                    event.stopPropagation();//清除冒泡
+                    _this.node.classList.add("click")
+                    // console.log(_this)
+                    if (score % 10 == 0) {
+                        seep += 0.006;
+                    }
+                    scoreEl.innerHTML = ""
+                    score.toString().split("").forEach(function (e, i) {
+
+                        var node = document.createElement("div");
+                        node.classList.add("num");//56
+                        node.style.backgroundPositionX = -e * 56 + "px"
+                        scoreEl.appendChild(node);
+
+                    })
+                }
+            }
+
+        }
+
+        Car.prototype.update = function () {
+            this.node.style.left = this.x * 100 + "px";
+            this.node.style.top = this.y * 100 + "px";
+        }
+        Car.prototype.move = function () {
+            this.y += seep
+
+            this.update();
+        }
+        for (var i = 3; i > 0; i--) {
+            var a = new Car(i - 2);
+            var tmp = puzi.shift();
+            puzi.push(tmp);
+            a.music = tmp
+            kong.push(a);
+        }
+        function dj() {
+            kong.forEach(function (e, i) {
+                e.move()
+            })
+            if (kong[kong.length - 1].y >= 0) {
+                var b = new Car(-1);
+                var tmp = puzi.shift();
+                puzi.push(tmp);
+                b.music = tmp;
+                // console.log(tmp)
+                kong.push(b)
+            }
+
+            // console.log(kong)
+            var first = kong.filter(function (e) {
+                return !e.pding
+            })[0]
+            // console.log(first)
+            if (first && first.y >= 5) {//5就是页面的高度减去小盒子的高度
+                // clearInterval(1)//1就是清除一个，数字几就清除几次
+                for (var i = 0; i <= score; i++) {
+                    clearInterval(i)
+                }
+                endscore.innerHTML = "你的得分是" + score;
+                end.style.display = "block";
+            }
+            var hidden = kong.filter(function (e) {
+                return e.pding
+            })[0];
+            // console.log(hidden)
+            if (hidden && hidden.y >= 6) {//5就是页面的高度减去小盒子的高度
+                container.removeChild(hidden.node);
+
+                kong.splice(kong.indexOf(hidden), 1)
+            }
+        }
+        // setInterval(function () {
+        //   var none =  kong.filter(function (e) {
+        //         return !e.pding
+        //     });
+        //     // console.log(none)
+        //  if(none.length)
+        //     none[0].node.click();
+        // },500)
+        var content = document.querySelector(".content");
+        content.onclick = function () {
+            location.reload();
+        }
+    </script>
+</body>
+
+</html>

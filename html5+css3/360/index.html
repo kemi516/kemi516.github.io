@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: black;
+        }
+
+        .box {
+
+            position: relative;
+            z-index: -1;
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            transition: all .6s;
+        }
+
+        .box>div {
+            width: 100%;
+            height: 100%;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: fixed;
+            top: 0;
+            right: 0;
+        }
+
+        ul li {
+            border-radius: 50%;
+            margin: 10px;
+            width: 10px;
+            height: 10px;
+            background: rgb(150, 205, 12);
+        }
+
+
+        .box .d2 {
+            position: relative;
+            display: flex;
+            height: 100%;
+        }
+
+        .box .d3 {
+            width: 100%;
+            position: relative;
+            /* background-color: rgba(38, 173, 74, 0.311); */
+            height: 100%;
+        }
+
+        .box .d1 {
+            height: 100%;
+            /* background-color: rgba(3, 3, 3, 0.723); */
+        }
+
+        .box .d1 h1 {
+            font-size: 50px;
+        }
+
+        .box .d1 p {
+            text-align: center;
+            position: relative;
+            top: -20px;
+            left: -30px;
+        }
+
+        .box .d1 span>a:nth-child(1) {
+            display: inline-block;
+            background-color: rgba(3, 3, 3, 0.523);
+            padding: 20px 50px;
+            border-radius: 33px;
+            border: 1px solid white;
+        }
+
+        .box .d1 span>a:nth-child(2) {
+            display: inline-block;
+            background-color: white;
+            color: #131416;
+            font-size: 16px;
+            padding: 18px 35px;
+            border-radius: 33px;
+            border: 1px solid white;
+        }
+
+        .box .d1 span>a:nth-child(2) img {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        .box .d5 {
+            position: relative;
+            /* background-color: rgb(210, 38, 118); */
+        }
+
+        nav {
+            width: 1200px;
+            margin: auto;
+        }
+
+        .top {
+            position: absolute;
+            top: 0;
+            z-index: 999;
+            width: 1200px;
+            margin: 33px auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .top .right {
+            color: white;
+        }
+
+        .box .d4 {
+            height: 100%;
+            position: relative;
+            display: flex;
+        }
+
+        .box .d4 .content {
+            color: white;
+            position: absolute;
+            top: 20%;
+            left: 20%;
+        }
+
+        .active {
+            background: pink;
+        }
+
+        .d1 {
+            background: url("./image/01.jpg");
+            background-position: center;
+            color: white;
+        }
+
+        .box .d1 .content {
+            color: white;
+            width: 30%;
+            margin: 9% auto;
+        }
+
+        /* .box .d1 .content span {
+            color: black;
+        } */
+
+        .box .d2 .content {
+            color: white;
+            position: absolute;
+            top: 20%;
+            left: 20%;
+        }
+
+        .box .d3 .content {
+            color: white;
+            position: absolute;
+            top: 20%;
+            left: 20%;
+        }
+
+        .box .d5 .content {
+            color: white;
+            position: absolute;
+            top: 20%;
+            left: 20%;
+        }
+
+        .content {
+            opacity: 0;
+            transition: all 3s;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+
+        <div class="top">
+            <div class="left"><img src="./image/极速浏览器.png" alt=""></div>
+            <div class="right"><span>论坛</span><span>扩展</span><span>Mac版</span></div>
+        </div>
+    </nav>
+    <div class="box">
+        <div class="d1">
+            <div class="content">
+                <h1>畅快浏览 极致体验</h1>
+                <p>全新Chrome内核浏览器，性能更强，速度更快</p>
+                <span>
+                    <a>32位版本</a>
+                    <a><img src="https://se3.360simg.com/t0102fdf3201e9fcf21.png">64位版本
+                        <!-- <p>NEW</p> -->
+                    </a>
+                </span>
+            </div>
+        </div>
+        <div class="d2">
+
+            <div class="content">
+                <h1 class="bigTitleWord">极速</h1>
+                <div class="line">一</div>
+                <h3 class="midTitleWord">全新Chromium内核</h3>
+                <p class="smaTitleWord smaTitle">性能强劲，快如闪电。</p>
+                <button> <a href="https://down.360safe.com/cse/360cse_13.5.2022.0.exe"
+                        class="alineCenter smallDownloadBtn">立即体验</a></button>
+            </div>
+            <video autoplay="" loop="" muted="">
+                <source src="https://s2.ssl.qhres2.com/static/dfeefadde568eab0.mp4" type="video/mp4">
+                当前浏览器不支持 video直接播放，点击这里下载视频： <a href="myvideo.webm">下载视频</a>
+            </video>
+        </div>
+        <div class="d3">
+            <div class="content">
+                <h1 class="bigTitleWord">极酷</h1>
+                <div class="line">一</div>
+                <h2 class="midTitleWord">暗夜炫黑模式</h2>
+                <p class="smaTitleWord smaTitle">定义酷，定义你。</p>
+                <button> <a href="https://down.360safe.com/cse/360cse_13.5.2022.0.exe"
+                        class="alineCenter smallDownloadBtn">立即体验</a></button>
+            </div>
+            <video autoplay="" loop="" muted="">
+                <source src="https://s3.ssl.qhres2.com/static/9bebcedf292f327e.mp4" type="video/mp4">
+                当前浏览器不支持 video直接播放，点击这里下载视频： <a href="myvideo.webm">下载视频</a>
+            </video>
+
+        </div>
+        <div class="d4">
+            <video autoplay="" loop="" muted="">
+                <source src="https://s1.ssl.qhres2.com/static/fdf92889c539303c.mp4" type="video/mp4">
+                当前浏览器不支持 video直接播放，点击这里下载视频： <a href="myvideo.webm">下载视频</a>
+            </video>
+            <div class="content">
+                <h1>极安全</h1>
+                <div class="line">一</div>
+                <h1>DNS加密防劫持</h1>
+                <h3>安全升级，肆意无忌。</h3>
+                <button> <a href="https://down.360safe.com/cse/360cse_13.5.2022.0.exe"
+                        class="alineCenter smallDownloadBtn">立即体验</a></button>
+            </div>
+        </div>
+        <div class="d5">
+
+            <div class="content">
+                <h1 class="bigTitleWord">极视界</h1>
+                <div class="line">一</div>
+                <h2 class="midTitleWord">4K高清视频播放</h2>
+                <p class="smaTitleWord smaTitle">还原真实之美 ，尽显万物本色。</p>
+                <button> <a href="https://down.360safe.com/cse/360cse_13.5.2022.0.exe"
+                        class="alineCenter smallDownloadBtn">立即体验</a></button>
+            </div>
+            <video autoplay="" loop="" muted="">
+                <source src="https://s1.ssl.qhres2.com/static/7e7f0ec4a0cc7a66.mp4" type="video/mp4">
+                当前浏览器不支持 video直接播放，点击这里下载视频： <a href="myvideo.webm">下载视频</a>
+            </video>
+            <style>
+                .d2 h1,
+                .d3 h1,
+                .d4 h1,
+                .d5 h1 {
+                    font-size: 50px;
+                }
+
+                .d2 .line,
+                .d3 .line,
+                .d4 .line,
+                .d5 .line {
+                    font-size: 30px;
+                    color: gray;
+                }
+
+                .d2 button,
+                .d3 button,
+                .d4 button,
+                .d5 button {
+                    padding: 10px 50px;
+                    border-radius: 50px;
+                    border: 2px solid white;
+                    background-color: transparent;
+                }
+
+                .d2 button a,
+                .d3 button a,
+                .d4 button a,
+                .d5 button a {
+                    text-decoration: none;
+                    color: white;
+                }
+
+                .d5 video {
+                    height: 83vh;
+                }
+
+                .footers {
+                    background: #131416;
+                    width: 100%;
+                    height: 300px;
+                }
+
+                .footer {
+
+                    color: #9a9089;
+                    margin: auto;
+                    width: 1000px;
+                    padding: 16px 0;
+                }
+
+                .footer a {
+                    color: #9a9089;
+                    text-decoration: none;
+                    text-align: center;
+                }
+
+                .footer .ab {
+                    display: inline-block;
+                    width: 100%;
+                    text-align: center;
+                }
+
+                .footer p {
+                    text-align: center;
+                }
+            </style>
+            <div class="footers">
+                <div id="footer" class="footer container">Copyright © 2005-
+                    <script>var crdate = new Date; document.write(crdate.getFullYear())</script>2022 360.CN All Rights
+                    Reserved
+                    360互联网安全中心
+                    <a target="_blank" href="http://www.360.cn/privacy/v3/bps360jsllqWindowsb.html">隐私政策</a>
+                    <a target="_blank" href="https://beian.miit.gov.cn">京ICP证080047号[京ICP备08010314号-6]</a>
+                    <br>
+                    <p>
+                        网站举报电话：4006693600 举报邮箱：<a href="mailto:kefu@360.cn">kefu@360.cn</a> 互联网违法和不良信息举报中心：<a
+                            target="_blank" href="https://www.12377.cn/">https://www.12377.cn</a>
+                    </p>
+
+                    <a class="ab" target="_blank"
+                        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11000002000006">
+                        <img src="https://se1.360simg.com/t01d8eda6e551cf2615.png"
+                            style="vertical-align: middle; border:none;" alt=""> 京公网安备 11000002000006号</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <ul class="dot">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+
+    <script>
+        // dot.wheelDelta = function () {
+        //     console.log("k")
+        // }
+
+        var box = document.querySelector(".box");
+        var boxs = document.querySelectorAll(".box>div");
+        var dot = document.querySelectorAll(".dot li");
+        var content = document.querySelectorAll(".content");
+        dot[0].classList.add("active")
+        // console.log(content);
+        window.onload = function () {
+            content[0].style.opacity = 1
+        }
+        var h = window.innerHeight;
+        window.onresize = function () {
+            h = window.innerHeight;
+        }
+        document.querySelector("body").style.height = h + "px";
+        document.querySelector(".box").style.height = 5 * h + "px";
+        boxs.forEach(function (e) {
+            e.style.height = h + "px"
+        })
+        // window.onscroll = function () {
+        //     console.log("L")
+        // }
+        dot.forEach(function (e, i) {
+            e.onmousemove = function (event) {
+                // console.log(event);
+
+
+                box.style.marginTop = -i * h + "px"
+                dot.forEach(function (el, il) {
+                    console.log(il)
+                    el.classList.remove("active");
+                    if (i == il) {
+                        content[il].style.opacity = 1
+                    }
+                    else {
+                        content[il].style.opacity = 0
+                    }
+                })
+                e.classList.add("active")
+
+            }
+        });
+
+
+        var count = 0;
+        var id;
+        var pd = true;
+        window.onmousewheel = function sor(event) {
+            var et = event
+            if (pd) {
+                console.log(event)
+                pd = false;
+                id = setTimeout(function () {
+                    if (et.wheelDelta > 0 || et.detail < 0) {//火狐event.detail  向上滚动-3 向下滚动+3
+                        //向上滚，
+                        count--
+                        count < 0 ? count = 0 : count
+                        // console.log("up")
+                        pd = true;
+                    } else {
+                        count++
+                        count > 4 ? count = 4 : count
+                        //向下滚
+                        // console.log("down")
+                        pd = true;
+                    }
+                    box.style.marginTop = -count * h + "px";
+                    dot.forEach(function (el, il) {
+                        console.log(il)
+                        el.classList.remove("active");
+                        if (count == il) {
+                            content[il].style.opacity = 1
+                        }
+                        else {
+                            content[il].style.opacity = 0
+                        }
+                    })
+                    dot[count].classList.add("active")
+                }, 1000)
+
+            }
+
+
+        }
+
+
+    </script>
+</body>
+
+</html>

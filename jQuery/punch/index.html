@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>打地鼠</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .box {
+            margin: auto;
+            width: 600px;
+            height: 600px;
+            background: url('./images/timg.jpg') no-repeat center;
+            position: relative;
+            cursor: url('./images/chuizi.png'), auto;
+        }
+
+        .box img {
+            width: 130px;
+            height: 130px;
+            position: absolute;
+            top: 100px;
+            left: 46px;
+            display: none;
+            z-index: 2;
+        }
+
+        img:nth-child(2) {
+            top: 100px;
+            left: 246px;
+        }
+
+        img:nth-child(3) {
+            top: 100px;
+            left: 446px;
+        }
+
+        img:nth-child(4) {
+            top: 250px;
+            left: 46px;
+        }
+
+        img:nth-child(5) {
+            top: 250px;
+            left: 246px;
+        }
+
+        img:nth-child(6) {
+            top: 250px;
+            left: 446px;
+        }
+
+        img:nth-child(7) {
+            top: 380px;
+            left: 46px;
+        }
+
+        img:nth-child(8) {
+            top: 380px;
+            left: 246px;
+        }
+
+        img:nth-child(9) {
+            top: 380px;
+            left: 446px;
+        }
+
+        button {
+            width: 200px;
+            height: 60px;
+            position: absolute;
+            top: 300px;
+            left: 206px;
+            background-color: red;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+        }
+
+        .times {
+            width: 200px;
+            height: 30px;
+            background-color: yellow;
+            border-radius: 20px;
+            position: absolute;
+            top: 100px;
+            left: 0px;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        .fens {
+            width: 200px;
+            height: 30px;
+            background-color: yellow;
+            border-radius: 20px;
+            position: absolute;
+            top: 100px;
+            right: 0;
+            line-height: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <img src="./images/mouse.png" alt="">
+        <img src="./images/mouse.png" alt="">
+        <img src="./images/mouse.png" alt="">
+        <img src="./images/mouse.png" alt="">
+        <img src="./images/mouse.png" alt="">
+        <img src="./images/mouse.png" alt="">
+        <img src="./images/mouse.png" alt="">
+        <img src="./images/mouse.png" alt="">
+        <img src="./images/mouse.png" alt="">
+        <button>点击开始游戏</button>
+        <div class="times"></div>
+        <div class="fens"></div>
+    </div>
+    <script>
+        var num = 0;
+        var t1 = '';
+        var t2 = '';
+        var time = 60;
+        var f = 0;
+        $(".times").text('剩余时间：' + time + '秒！！')
+        $(".fens").text('当前得分为：' + f + '分')
+        $("button").click(function () {
+            time = 60
+            f = 0
+            $("button").css("display", "none")
+            $(".times").text('剩余时间：' + time + '秒！！')
+            $(".fens").text('当前得分为：' + f + '分')
+            t2 = setInterval(function () {
+                num = Math.floor(Math.random() * $("img").length)
+                for (var i = 0; i < $("img").length; i++) {
+                    $("img").eq(i).css("display", 'none')
+                    $("img").eq(i).attr('src', './images/mouse.png')
+
+                }
+                $("img").eq(num).css("display", 'block').click(function () {
+                    this.src = './images/mouse2.png'
+                    f++
+                    var that = this
+                    setTimeout(function () {
+                        that.style.display = 'none'
+                    }, 200)
+                    $(".fens").text('当前得分为：' + f + '分')
+                })
+            }, 2000)
+            t1 = setInterval(function () {
+                $(".times").text('剩余时间：' + time + '秒！！')
+                time--;
+                if (time < 0) {
+                    clearInterval(t1)
+                    clearInterval(t2)
+                    $("button").css('display', 'block')
+                    for (var j = 0; j < $("img").length; j++) {
+                        $("img").eq(j).css('display', 'none')
+                    }
+                }
+                if ($("button").text() == '点击开始游戏') {
+                    $("button").text('重新开始游戏')
+                }
+            }, 1000)
+        })
+    </script>
+</body>
+
+
+</html>

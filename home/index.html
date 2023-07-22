@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh" style="font-size:calc(100vw/375)">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" /> -->
+    <link crossorigin="anonymous" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+        href="https://lib.baomitu.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <link rel="shortcut icon"
+        href="https://img0.baidu.com/it/u=3258171863,3947691538&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+        type="image/x-icon">
+    <title>首页</title>
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            /* height: 100vh; */
+            overflow: hidden;
+            overflow-y: auto;
+            background-image: url(./image/bg.gif);
+
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .lcontainer .all {
+            font-weight: bold;
+
+        }
+
+        .left {
+            width: 101rem;
+            height: 100vh;
+            /* background-color: rgba(255, 192, 203, 0.333); */
+        }
+
+        .left .lcontainer {
+            box-shadow: 0 0 3px white;
+            /* background-color: rgba(255, 192, 203, 0.333); */
+            width: 101rem;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .left .ltop {
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 3px white;
+            width: 30rem;
+            text-align: center;
+            margin: 10rem auto;
+            padding: 3rem;
+
+        }
+
+        @keyframes logo {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .left img {
+            width: 100%;
+            border-radius: 50%;
+            display: block;
+            animation: logo 6s linear infinite;
+        }
+
+        .left .content {
+            padding: 6rem;
+            text-align: center;
+            font-size: 3.5rem;
+        }
+
+        .left .content h1 {
+            margin: 0;
+            padding: 6rem;
+            text-align: center;
+            font-size: 7rem;
+        }
+
+        .left .content>div {
+            border-radius: 3px;
+            margin-top: 3rem;
+            box-shadow: 0 0 3px gray;
+            background-color: rgb(127, 255, 212);
+            padding: 1rem 0;
+            cursor: pointer;
+        }
+
+        .left .content>div:hover {
+            box-shadow: 0 0 13px gray;
+        }
+
+        .right {
+            width: 275rem;
+            /* background-color: aqua; */
+        }
+
+        .right>div {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100%;
+
+        }
+
+        .right img {
+            width: 100%;
+            border-radius: 6rem;
+        }
+
+        .right .rl .container .imgg {
+            margin-top: 10rem;
+        }
+
+        .right .itembs {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="left">
+        <div class="lcontainer">
+            <div class="ltop">
+                <img src="./image/ke.jpg" alt="">
+            </div>
+            <div class="content all">
+                <div class="bootstrap">
+                    <h1>Bootstrap</h1>
+                </div>
+                <div class="js">
+                    <h1>JavaScript</h1>
+                </div>
+                <div class="jquery">
+                    <h1>jQuery</h1>
+                </div>
+                <div class="css3">
+                    <h1>HTML5+CSS3</h1>
+                </div>
+                <div class="vue">
+                    <h1>Vue</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right">
+        <div class="rl">
+            <div class="container rall">
+
+                <div class="row itembs">
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 imgg">
+                        <a href="/bootstrap/facelift"> <img src="./image/zx.jpg" alt=""></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 imgg">
+                        <a href="/bootstrap/clothing/"> <img src="./image/fz.jpg" alt=""></a>
+                    </div>
+                </div>
+                <div class="row itembs">
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 imgg">
+                        <a href="/JavaScript/clock.html"> <img src="./image/fksz.jpg" alt=""></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 imgg">
+                        <a href="/JavaScript/lotto.html"> <img src="./image/cj.jpg" alt=""></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 imgg">
+                        <a href="/JavaScript/piano.html"><img src="./image/gqds.jpg" alt=""></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 imgg">
+                        <a href="/JavaScript/memory.html"> <img src="./image/jykp.jpg" alt=""></a>
+                    </div>
+                </div>
+                <div class="row itembs">
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 imgg">
+                        <a href="/jQuery/accordion.html"> <img src="./image/sfq.jpg" alt=""></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 imgg">
+                        <a href="/jQuery/zoom.html"><img src="./image/fdj.jpg" alt=""></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 imgg">
+                        <a href="/jQuery/punch/"><img src="./image/dd.jpg" alt=""></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 imgg">
+                        <a href="/jQuery/tpx.html"><img src="./image/sk.jpg" alt=""></a>
+                    </div>
+                </div>
+                <div class="row itembs">
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 imgg">
+                        <a href="/html5+css3/ihover.html"><img src="./image/css3jx.jpg" alt=""></a>
+
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 imgg">
+                        <a href="/html5+css3/parallax"><img src="./image/sc.jpg" alt=""></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 imgg">
+                        <a href="/html5+css3/audio"><img src="./image/yp.jpg" alt=""></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 imgg">
+                        <a href="/html5+css3/360/"><img src="./image/360.jpg" alt=""></a>
+                    </div>
+                </div>
+                <div class="row itembs">
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 imgg">
+                        <a href="/vue/快听音乐/"><img src="./image/music.png" alt=""></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 imgg">
+                        <a href="/vue/影城购票/index.html"><img src="./image/ticket.png" alt=""></a>
+                    </div>
+                </div>
+                <!-- <div class="row itembs">
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 imgg">
+
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 imgg">
+                        <a href="#"> <iframe src="/JavaScript/lotto.html" frameborder="0"></iframe></a>
+                    </div>
+                </div> -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+        var bs = document.querySelector(".itembs");
+        var all = document.querySelectorAll(".left .all>div");
+        var rall = document.querySelectorAll(".right .rall>div");
+        rall[0].style.display = "block";
+        all[0].style.backgroundColor = "antiquewhite";
+        all.forEach(function (e, i) {
+            e.onclick = function () {
+                rall.forEach(function (ee, ii) {
+                    rall[ii].style.display = "none";
+                    all[ii].style.backgroundColor = "aquamarine";
+                })
+                rall[i].style.display = "block";
+                all[i].style.backgroundColor = "antiquewhite";
+            }
+        })
+
+
+
+    </script>
+</body>
+
+</html>

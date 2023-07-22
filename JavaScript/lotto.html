@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九宫格抽奖</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 400px;
+            margin: 100px auto;
+        }
+
+        .input {
+            width: 333px;
+            margin: auto;
+            height: 33px;
+            box-shadow: 0 0 10px;
+            text-align: center;
+            line-height: 33px;
+        }
+
+        .text {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            width: 400px;
+            height: 400px;
+
+        }
+
+        .text div {
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            width: 100px;
+            height: 100px;
+            background: #16BAEC;
+            margin: 6px
+        }
+
+        .kai {
+            background: #FF943D !important;
+        }
+
+        .zj {
+            background: #4E4E4E !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="input"></div>
+        <div class="text">
+        </div>
+    </div>
+    <script>
+        var input = document.querySelector(".input");
+        var text = document.querySelector(".text");
+        var arr = ["手机", "平板", "电磁炉", "电视", "开始", "洗衣机", "电脑", "冰箱", "衣柜",]
+        var tmp = [];
+        arr.forEach(function (e, i) {
+            var node = document.createElement("div");
+            node.innerHTML = e;
+            if (i == 4) {
+                node.classList.add("kai");
+            }
+            text.appendChild(node);
+            tmp.push(node);
+        });
+        // console.log(tmp);
+        var newarr = [];
+        tmp.forEach(function (e, i) {
+            if (i < 3) {
+                newarr.push(e)
+            }
+        });
+        newarr.push(tmp[5], tmp[8], tmp[7], tmp[6], tmp[3]);
+        // console.log(newarr);
+        tmp[4].style.cursor = "pointer";
+        newarr[0].classList.add("zj");
+        function start() {
+            input.innerHTML = "";
+            tmp[4].style.cursor = "not-allowed";
+            tmp[4].onclick = null;
+            var count = 0;
+            var cishu = 0;
+            // console.log(index);
+            timer = setInterval(function () {
+                cishu++;
+                var index = Math.floor(Math.random() * newarr.length * 10 + 14);
+                newarr.forEach(function (e, i) {
+                    newarr[i].classList.remove("zj");
+                })
+                newarr[count].classList.add("zj");
+
+                if (cishu > index) {
+                    tmp[4].onclick = start;
+                    tmp[4].style.cursor = "pointer";
+                    newarr[count].classList.add("zj");
+                    clearInterval(timer);
+                    input.innerHTML = "恭喜您中了" + newarr[count].innerHTML + "!!!";
+                }
+                // console.log(cishu, index)
+                if (count == 7) {
+                    count = -1;
+                }
+                count++;
+            }, 66)
+        }
+        tmp[4].onclick = start;
+
+    </script>
+</body>
+
+</html>

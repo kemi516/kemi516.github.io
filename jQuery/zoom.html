@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>放大镜</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+        .box {
+            margin: auto;
+            width: 200px;
+            height: 200px;
+            background-image: url(https://img2.baidu.com/it/u=799735912,869938311&fm=253&fmt=auto?w=300&h=300);
+            background-size: cover;
+            position: relative;
+        }
+
+        .bg {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .da {
+            margin: auto;
+            width: 400px;
+            height: 400px;
+            background-image: url(https://img2.baidu.com/it/u=799735912,869938311&fm=253&fmt=auto?w=300&h=300);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="bg"></div>
+    </div>
+    <div class="da"></div>
+    <script>
+        function fd(num, size) {
+            var bs = num;
+            var bgsize = bs * 100 + "%"
+            var boxWs = $(".box").css({ "width": size, "height": size })
+            var boxWs = $(".da").css({ "width": size * 2, "height": size * 2 })
+            // var boxY = $(".box").height()
+            // var daW = $(".da").width()
+            // var daY = $(".da").height();
+            var boxW = size
+            var boxY = size
+            var daW = size * 2
+            var daY = size * 2
+            var bgW = boxW / bs
+            var bgH = boxY / bs
+            $(".da").css({ backgroundSize: bgsize })
+            $(".bg").css({ width: bgW, height: bgH })
+            // console.log($(".da").height())
+            $(".bg").mousemove(function () {
+                var sbX = event.pageX - $(".box").offset().left - (bgW / 2)
+                var sbY = event.pageY - $(".box").offset().top - (bgH / 2)
+                sbX < 0 ? sbX = 0 : sbX
+                sbY < 0 ? sbY = 0 : sbY
+                sbX > boxW - bgW ? sbX = boxW - bgW : sbX//大的盒子减遮罩层
+                sbY > boxY - bgH ? sbY = boxY - bgH : sbY
+                // console.log(sbX,sbY)
+                $(".bg").css({ top: sbY, left: sbX })
+                // console.log($(".box").offset().left)
+                $(".da").css({ backgroundPositionX: -(daW / bgW) * sbX, backgroundPositionY: -(daY / bgH) * sbY, backgroundSize: bgsize })
+            })
+        }
+        fd(2, 200)
+    </script>
+</body>
+
+</html>

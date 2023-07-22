@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh" style="font-size: calc(100vw/375);">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
+    <link crossorigin="anonymous" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+        href="https://lib.baomitu.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <title>方块时钟</title>
+    <style>
+        .box {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            position: relative;
+        }
+
+        .boxx {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+
+        }
+
+        .boxx div {
+            display: flex;
+        }
+
+        .boxx div div {
+            width: 26rem;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        span {
+            display: block;
+            width: 8rem;
+            height: 8rem;
+            transition: all 0.6s;
+            transform: scale(0.5);
+        }
+
+        span.bg {
+            transform: scale(1);
+            outline: 0.5rem solid rgba(255, 192, 203, 0.607);
+            display: block;
+            background: aqua;
+        }
+
+        .dot {
+
+            flex-direction: column;
+        }
+
+        p.sp {
+            outline: 1px solid pink;
+            background: pink;
+            width: 8rem;
+            height: 8rem;
+            margin: 8rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="boxx">
+                    <div class="hh">
+                        <div class="s1"></div>
+                        <div class="s2"></div>
+                    </div>
+                    <div class="dot">
+                        <p class="sp"></p>
+                        <p class="sp"></p>
+                    </div>
+                    <div class="mm">
+                        <div class="s1"></div>
+                        <div class="s2"></div>
+                    </div>
+                    <div class="dot">
+                        <p class="sp"></p>
+                        <p class="sp"></p>
+                    </div>
+                    <div class="ss">
+                        <div class="s1"></div>
+                        <div class="s2"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        var arr = [
+            [
+                [1, 1, 1],
+                [1, 0, 1],
+                [1, 0, 1],
+                [1, 0, 1],
+                [1, 1, 1],
+            ],
+            [
+                [0, 0, 1],
+                [0, 0, 1],
+                [0, 0, 1],
+                [0, 0, 1],
+                [0, 0, 1],
+            ],
+            [
+                [1, 1, 1],
+                [0, 0, 1],
+                [1, 1, 1],
+                [1, 0, 0],
+                [1, 1, 1],
+            ],
+            [
+                [1, 1, 1],
+                [0, 0, 1],
+                [1, 1, 1],
+                [0, 0, 1],
+                [1, 1, 1],
+            ],
+            [
+                [1, 0, 1],
+                [1, 0, 1],
+                [1, 1, 1],
+                [0, 0, 1],
+                [0, 0, 1],
+            ],
+            [
+                [1, 1, 1],
+                [1, 0, 0],
+                [1, 1, 1],
+                [0, 0, 1],
+                [1, 1, 1],
+            ],
+            [
+                [1, 1, 1],
+                [1, 0, 0],
+                [1, 1, 1],
+                [1, 0, 1],
+                [1, 1, 1],
+            ],
+            [
+                [1, 1, 1],
+                [0, 0, 1],
+                [0, 0, 1],
+                [0, 0, 1],
+                [0, 0, 1],
+            ],
+            [
+                [1, 1, 1],
+                [1, 0, 1],
+                [1, 1, 1],
+                [1, 0, 1],
+                [1, 1, 1],
+            ],
+            [
+                [1, 1, 1],
+                [1, 0, 1],
+                [1, 1, 1],
+                [0, 0, 1],
+                [1, 1, 1],
+            ],
+
+        ]
+        var bhh = document.querySelector(".hh").querySelectorAll("div");
+        var bmm = document.querySelector(".mm").querySelectorAll("div");
+        var bss = document.querySelector(".ss").querySelectorAll("div");
+        console.log(bss[0])
+        function num0(box) {
+            arr[0].forEach(function (row, rowi) {
+                row.forEach(function (e, i) {
+                    var span = document.createElement("span");
+                    if (e) {
+                        span.classList.add("bg");
+                    }
+                    box.appendChild(span);
+                })
+            });
+        }
+        bhh.forEach(function (e) {
+            num0(e);
+        })
+        bmm.forEach(function (e) {
+            num0(e);
+        })
+        bss.forEach(function (e) {
+            num0(e);
+        })
+
+        function show(span, n) {
+            arr[n].forEach(function (row, rowi) {
+                row.forEach(function (e, i) {
+                    if (e) {
+                        span[rowi * 3 + i].classList.add("bg")
+                    }
+                    else {
+                        span[rowi * 3 + i].classList.remove("bg")
+
+                    }
+                })
+            })
+        }
+        setInterval(function () {
+            var date = new Date();
+            var hh = String(date.getHours()).padStart(2, "0");
+            var mm = String(date.getMinutes()).padStart(2, "0")
+            var ss = String(date.getSeconds()).padStart(2, "0")
+
+            bhh.forEach(function (e, i) {
+                h1span = e.querySelectorAll("span");
+                show(h1span, hh[i])
+            })
+            bmm.forEach(function (e, i) {
+                m1span = e.querySelectorAll("span");
+                show(m1span, mm[i])
+            })
+            bss.forEach(function (e, i) {
+                s1span = e.querySelectorAll("span");
+                show(s1span, ss[i])
+            })
+        }, 1000)
+
+    </script>
+</body>
+
+</html>
