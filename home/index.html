@@ -222,48 +222,39 @@
                 </div>
                 <div class="row itembs">
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 imgg">
-                        <a href="/vue/快听音乐/"><img src="./image/music.png" alt=""></a>
+                        <a href="/vue/h5/index.html"><img src="./image/ruixin.png" alt=""></a>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 imgg">
                         <a href="/vue/影城购票/index.html"><img src="./image/ticket.png" alt=""></a>
                     </div>
-                </div>
-                <!-- <div class="row itembs">
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 imgg">
 
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 imgg">
-                        <a href="#"> <iframe src="/JavaScript/lotto.html" frameborder="0"></iframe></a>
-                    </div>
-                </div> -->
+                </div>
 
             </div>
 
         </div>
 
-    </div>
 
-
-    <script>
-        var bs = document.querySelector(".itembs");
-        var all = document.querySelectorAll(".left .all>div");
-        var rall = document.querySelectorAll(".right .rall>div");
-        rall[0].style.display = "block";
-        all[0].style.backgroundColor = "antiquewhite";
-        all.forEach(function (e, i) {
-            e.onclick = function () {
-                rall.forEach(function (ee, ii) {
-                    rall[ii].style.display = "none";
-                    all[ii].style.backgroundColor = "aquamarine";
-                })
-                rall[i].style.display = "block";
-                all[i].style.backgroundColor = "antiquewhite";
-            }
-        })
+        <script>
+            var bs = document.querySelector(".itembs");
+            var all = document.querySelectorAll(".left .all>div");
+            var rall = document.querySelectorAll(".right .rall>div");
+            rall[0].style.display = "block";
+            all[0].style.backgroundColor = "antiquewhite";
+            all.forEach(function (e, i) {
+                e.onclick = function () {
+                    rall.forEach(function (ee, ii) {
+                        rall[ii].style.display = "none";
+                        all[ii].style.backgroundColor = "aquamarine";
+                    })
+                    rall[i].style.display = "block";
+                    all[i].style.backgroundColor = "antiquewhite";
+                }
+            })
 
 
 
-    </script>
+        </script>
 </body>
 
 </html>
