@@ -1,251 +1,245 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
-    <title>音乐</title>
+    <title>音乐播放器</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Bitter:400,700&display=swap&subset=latin-ext"
+        rel="stylesheet" /> -->
+    <link rel="shortcut icon"
+        href="https://img0.baidu.com/it/u=2926715223,1445444764&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500"
+        type="image/x-icon">
+    <link rel="stylesheet" href="./index.css">
     <style>
-        body {
-            background: #DFE7EF;
-        }
-
-        .box {
-            padding: 33px;
-            margin: auto;
-            width: 600px;
-            height: 700px;
-            box-shadow: 0 0 13px;
-            border-radius: 13px;
-            padding-top: 0.1px;
-            color: #ACB8CC;
-        }
-
-        .box .left {
-            /* overflow: hidden; */
-            border-radius: 13px;
-            width: 70%;
-            height: 360px;
-            box-shadow: 0 0 23px #C3A27F;
-            position: relative;
-            left: -66px;
-            /* transform: scale(1.2); */
-            transition: all 1s;
-        }
-
-        .box .left img {
-            width: 100%;
-            position: absolute;
-            height: 100%;
-            border-radius: 13px;
-            transition: all 3s;
-            transform: scale(1);
-        }
-
-        .box .top {
-            margin-top: 30px;
-            display: flex;
-        }
-
-        .box .right {
-            position: relative;
-            left: -33px;
-            width: 30%;
-            display: flex;
-            flex-direction: column;
-            color: #ACB8CC;
-            align-items: center;
-        }
-
-        .box .right i {
-            display: block;
-            margin: 13px;
-        }
-
-        h3 {
-            color: #6D7C9A;
-            font-size: 33px;
-        }
-
-        h5 {
-            margin: 0;
-            font-size: 50px;
-        }
-
-        .bottom .line .lines {
-            background: aqua !important;
-            width: 0%;
-            height: 100%;
-            border-radius: 50px;
-            /* position: absolute; */
-            /* top: 0; */
-        }
-
-        .bottom .line input {
-            position: absolute;
-            top: -2px;
-            opacity: 0;
-            height: 100%;
-            display: block;
-            width: 100%;
-        }
-
-        .bottom .line {
-            margin-top: 77px;
-            background: pink;
-            width: 100%;
-            height: 12px;
-            border-radius: 50px;
-            font-size: 20px;
-            font-weight: border;
-            position: relative;
-        }
-
-        .bottom .end {
-            margin-top: -33px;
-            float: right;
-        }
-
-        .bottom .start {
-            margin-top: 23px;
-            float: left;
-        }
     </style>
 </head>
 
-<body>
+<body onselectstart="return false">
+    <div class="wrap">
+        <div class="up">
+            <div>
+                <div class="img">
+                </div>
+            </div>
+            <div class="control">
+                <i class="fa fa-heart"></i>
 
-    <div class="box">
-        <div class="top">
-            <div class="left">
-                <!-- 图片不要变形 -->
-                <img src="/jQuery/image/17.webp" alt="">
-                <img src="/jQuery/image/19.webp" alt="">
-                <img src="/jQuery/image/20.webp" alt="">
-            </div>
-            <div class="right">
-                <i class="fa fa-heart  fa-2x" aria-hidden="true"></i>
-                <i class="fa  fa-2x fa-external-link" aria-hidden="true"></i>
-                <i class="fa  fa-2x fa-fast-backward" aria-hidden="true"></i>
-                <i class="fa  fa-2x fa-fast-forward" aria-hidden="true"></i>
-                <i class="fa  fa-6x fa-play-circle" aria-hidden="true"></i>
-                <!-- <i class="fa  fa-6x fa-play-circle" aria-hidden="true"></i> -->
+                <i class="fa fa-share-square-o"></i>
+
+                <i class="fa fa-step-backward" id="up"></i>
+
+                <i class="fa fa-step-forward " id="next"></i>
+
+                <i class="fa fa-play-circle-o play"></i>
+
+                <i class="fa fa-pause-circle-o none stop"></i>
+
             </div>
         </div>
-        <h3>Leonard Cohen</h3>
-        <h5>Everybody Knows</h5>
-        <div class="bottom">
-            <!-- controls -->
-            <div class="end"> 00:00</div>
-            <div class="line">
-                <input type="range" name="" value="0">
-                <div class="lines"></div>
+        <div class="down">
+            <h1>musric</h1>
+            <h2>sapncer</h2>
+            <div class="">
+                <div class="ing"><i></i></div>
+                <span>00:00</span><input type="range" value="0" max="600"><span>00:00</span>
             </div>
-            <div class="start">00:00</div>
         </div>
-        <video src="./yin/1.mp3"></video>
     </div>
+
     <script>
-        var i = document.querySelectorAll(".right i");
-        var left = document.querySelector(".left");
-        var h3 = document.querySelector("h3");
-        var h5 = document.querySelector("h5");
-        var video = document.querySelector("video");
-        var imgs = document.querySelectorAll("img");
-        var lines = document.querySelector(".lines");
-        var end = document.querySelector(".end");
-        var start = document.querySelector(".start");
+        var data = [
+            {
+                id: 0,
+                name: 'Leonard Cohen',
+                author: 'Everybody Knows',
+                img: '/jQuery/image/17.webp',
+                mp3: '/html5+css3/audio/yin/1.mp3',
+                love: true
+            },
+            {
+                id: 2,
+                name: 'two',
+                author: 'kemi',
+                img: '/jQuery/image/19.webp',
+                mp3: '/html5+css3/audio/yin/2.mp3',
+                love: false
+            },
+            {
+                id: 3,
+                name: 'three',
+                author: 'kemi',
+                img: '/jQuery/image/20.webp',
+                mp3: '/html5+css3/audio/yin/3.mp3',
+                love: false
+            },
+        ]
 
-        var num = 0;
-        var love = true;
-        var hh3 = ["Leonard Cohen", "Mody", "Norm Ender"]
-        var hh5 = ["Everybody Knows", "Extreme Ways", "Mekann Sahibi"]
-        i[0].onclick = function () {
-            if (love) {
-                i[0].style.color = "red";
-                love = false
-            } else {
-                i[0].style.color = "#ACB8CC";
-                love = true
-            }
+        if (localStorage.getItem('data')) {
+            data = JSON.parse(localStorage.getItem('data'))
         }
-        imgs.forEach(function (e, i) {
-            imgs[i].style.opacity = 0
+        var audio, index;
+
+        localStorage.getItem('playIndex') ? index = localStorage.getItem('playIndex') : index = 0
+
+        function 转换时间(date) {
+            return (parseInt(+date / 60) < 10 ? '0' + parseInt(+date / 60) : parseInt(+date / 60)) + ':' + (parseInt(+date % 60) < 10 ? '0' + parseInt(date % 60) : parseInt(date % 60))
+        }
+
+        audio = document.createElement('audio')
+        $('body').append(audio)
+
+        function zuizhong() {
+            $('input').val(audio.currentTime)
+            $('.down span').eq(0).text(转换时间(audio.currentTime))
+            $('.ing>i').css('width', + $('input').val() / $('input').attr('max') * 100 + '%')
+            localStorage.setItem('playIndex', index)
+        }
+        function add(num) {
+            $('.wrap .up .img:last-of-type').css({
+                'background-image': 'url(' + data[num].img + ')'
+            })
+            $(audio).css('display', 'none')
+            audio.src = data[num].mp3
+            audio.oncanplay = function () {
+                $('.down span').eq(1).text(转换时间(audio.duration))
+                $('input').attr('max', audio.duration)
+            }
+            audio.ontimeupdate = zuizhong
+            $('.play').click(function () {
+                audio.play()
+                $('.stop').removeClass('none')
+                $(this).addClass('none')
+            })
+            $('.stop').click(function () {
+                audio.pause()
+                $('.play').removeClass('none')
+                $(this).addClass('none')
+            })
+            $('.down h1').text(data[num].name)
+            $('.down h2').text(data[num].author)
+            if (data[num].love) {
+                $('.control>i').addClass('love')
+            } else {
+                $('.control>i').removeClass('love')
+            }
+
+        }
+
+        add(index)
+
+        $('#next').click(function (e) {
+            ++index === data.length ? index = 0 : index
+
+            $('.up >div:first-child>div').css({ animation: 'fangda .3s 1 forwards ease-in', position: 'absolute', top: 0 }).addClass('ii')
+            $('.up >div:first-child ').append('<div class="img ii" style="animation: hou .3s  1  ease-in">')
+            setTimeout(() => {
+                $('.up >div:first-child>div:first-child').remove()
+                $('.up >div:first-child>div').removeClass('ii')
+            }, 300)
+
+            add(index)
+            if ($('.play')[0].className.includes('none')) {
+                audio.play()
+            }
+
         })
-        imgs[0].style.opacity = 1
-        i[2].onclick = function () {//上
-            imgs.forEach(function (e, i) {
-                imgs[i].style.opacity = 0
-                imgs[i].style.transform = ' scale(1.2)'
-
-            })
-            console.log(num);
-            i[4].className = ("fa  fa-6x fa-play-circle");
-            lines.style.width = 0 + "%"
-            num--
-            num < 0 ? num = 2 : num
-            imgs[num].style.opacity = 1
-            imgs[num].style.transform = ' scale(1)'
-            video.src = "./yin/" + num + ".mp3"
-            h3.innerHTML = hh3[num]
-            h5.innerHTML = hh5[num]
-        }
-        i[3].onclick = function () {//下
-            imgs.forEach(function (e, i) {
-                imgs[i].style.opacity = 0
-                imgs[i].style.transform = ' scale(1.2)'
-
-            })
-            i[4].className = ("fa  fa-6x fa-play-circle");
-            lines.style.width = 0 + "%"
-            num++
-            num > 2 ? num = 0 : num
-            imgs[num].style.opacity = 1
-            imgs[num].style.transform = ' scale(1)'
-            h3.innerHTML = hh3[num]
-            h5.innerHTML = hh5[num]
-
-            video.src = "./yin/" + num + ".mp3";
-
-        }
-        var pd = false
-        i[4].onclick = function () {//stop?
-            if (pd) {
-                i[4].className = ("fa  fa-6x fa-play-circle");
-                video.pause();
-                pd = false;
-            } else {
-                i[4].className = ("fa  fa-6x fa-pause-circle");
-                video.play();
-                pd = true;
+        $('#up').click(function (e) {
+            --index === -1 ? index = data.length - 1 : index
+            $('.up >div:first-child>div').css({ animation: 'fangda .3s 1 forwards ease-in', position: 'absolute', top: 0 }).addClass('ii')
+            $('.up >div:first-child ').append('<div class="img ii" style="animation: hou .3s  1  linear">')
+            setTimeout(() => {
+                $('.up >div:first-child>div:first-child').remove()
+                $('.up >div:first-child>div').removeClass('ii')
+            }, 300)
+            add(index)
+            if ($('.play')[0].className.includes('none')) {
+                audio.play()
             }
+        })
 
+        // 点击
+        $('input')[0].onmousedown = function () {
+            audio.ontimeupdate = null
+            var _this = this
+            this.onmousemove = function (e) {
+                $('.down span').eq(0).text(转换时间(_this.value))
+                $('.ing>i').css('width', + $(this).val() / $(this).attr('max') * 100 + '%')
+            }
         }
-        // video.ontimeupdate = function () {
-        //     end.innerHTML = Number(video.duration / 60).toFixed(2);
-        //     start.innerHTML = Number(video.currentTime / 60).toFixed(2);
-        //     // lines.style.width=(video.currentTime/60)*(100/(video.duration/60))+"%"
-        //     lines.style.width = (video.currentTime / video.duration) * 100 + "%"
-        // };
-        video.onended = function () {
-            i[4].className = ("fa  fa-6x fa-play-circle");
-            lines.style.width = 0 + "%"
-            start.innerHTML = "00:00";
+        $('input')[0].onmouseup = function (e) {
+            audio.ontimeupdate = zuizhong
+            audio.currentTime = $(this).val()
+            $('.ing>i').css('width', + $(this).val() / $(this).attr('max') * 100 + '%');
+            this.onmousemove = null
         }
-        var input = document.querySelector("input")
-        var video = document.querySelector("video")
-        input.oninput = function () {
-            lines.style.width = this.value + "%";
-            video.currentTime = (input.value * video.duration) / 100
+
+
+
+        // 爱心切换颜色
+        $('.control >i:first-child').click(function (e) {
+            data[index].love = !data[index].love
+            $('.control>i').toggleClass('love')
+            localStorage.setItem('data', JSON.stringify(data))
+        })
+
+        // 手机端
+        $('input')[0].ontouchstart = function () {
+            audio.ontimeupdate = null
+            var _this = this
+            this.ontouchmove = function (e) {
+                $('.down span').eq(0).text(转换时间(_this.value))
+                $('.ing>i').css('width', + $(this).val() / $(this).attr('max') * 100 + '%')
+            }
         }
-        video.ontimeupdate = function () {
-            end.innerHTML = Number(video.duration / 60).toFixed(2);
-            start.innerHTML = Number(video.currentTime / 60).toFixed(2);
-            lines.style.width = (this.currentTime / this.duration) * 100 + "%";
-            // input.value = (video.currentTime / video.duration) * 100
+        $('input')[0].ontouchend = function (e) {
+            audio.ontimeupdate = zuizhong
+            audio.currentTime = $(this).val()
+            $('.ing>i').css('width', + $(this).val() / $(this).attr('max') * 100 + '%')
+            this.onmousemove = null
         }
+
+
+
+
+
+
+        audio.onerror = function () {
+            alert("Error! 出错了,试一下切换下一首或者刷新页面");
+        };
+        audio.onprogress = function (e) {
+            console.log('还在下载...')
+        }
+        audio.onwaiting = function (e) {
+            console.log('缓存中...请稍等..')
+            var aaa = document.createElement('div')
+            aaa.innerHTML = '缓存中...请稍等..'
+            aaa.style = 'position: fixed;top:0px;transition: all 1s linear;opacity:1;'
+            console.log(aaa);
+            $('body').append(aaa)
+            setTimeout(() => {
+                aaa.style.opacity = '0'
+            }, 1000)
+            setTimeout(() => {
+                $(aaa).remove()
+            }, 2000)
+        }
+        audio.onplay = function (e) {
+            console.log('ok');
+        }
+        audio.onloadstart = function () {
+            console.log('正在查找音频');
+        }
+        // ended	返回音频/视频的播放是否已结束。
+        audio.onended = function (e) {
+            $('#next').click()
+        }
+
+
+
     </script>
 </body>
 
