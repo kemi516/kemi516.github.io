@@ -1,0 +1,1 @@
+import{o as a,c as e,w as s,i as t,a as r,b as n,h as o}from"./index-1873af1b.js";import{_ as l}from"./_plugin-vue_export-helper.1b428a4d.js";const u=l({data:()=>({})},[["render",function(l,u,f,i,d,p){const m=o,_=t;return a(),e(_,null,{default:s((()=>[r(m,null,{default:s((()=>[n("kemi")])),_:1})])),_:1})}]]);export{u as default};

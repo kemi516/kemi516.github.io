@@ -51,20 +51,103 @@
         .zj {
             background: #4E4E4E !important;
         }
+
+        #textInput_id {
+            width: 66vw;
+        }
     </style>
 </head>
 
 <body>
+    <div class="info">
+        <div class="container">
+            自定义抽奖内容(请使用英文逗号隔开哦！)
+        </div>
+        <input type="text" id="textInput_id" oninput="online()">
+        <input type="button" value="确定" onclick="kk()">
+    </div>
     <div class="box">
         <div class="input"></div>
         <div class="text">
+
         </div>
     </div>
     <script>
         var input = document.querySelector(".input");
         var text = document.querySelector(".text");
         var arr = ["手机", "平板", "电磁炉", "电视", "开始", "洗衣机", "电脑", "冰箱", "衣柜",]
+        document.getElementById('textInput_id').value = arr
+        var inputText = document.getElementById('textInput_id').value
         var tmp = [];
+        function online() {
+            inputText = document.getElementById('textInput_id').value
+        }
+        //
+        function kk() {
+            text.innerHTML = ''
+            input.innerHTML = ''
+            var tmp = [];
+
+            // inputText = tet.split(',')
+            // console.log("11", inputText)
+            arr = inputText.split(',')
+            // console.log('kk', document.querySelector(".kai"));
+
+            arr.forEach(function (e, i) {
+                var node = document.createElement("div");
+                node.innerHTML = e;
+                if (i == 4) {
+                    node.classList.add("kai");
+                }
+                text.appendChild(node);
+                tmp.push(node);
+            });
+            // console.log(tmp);
+            var newarr = [];
+            tmp.forEach(function (e, i) {
+                if (i < 3) {
+                    newarr.push(e)
+                }
+            });
+            newarr.push(tmp[5], tmp[8], tmp[7], tmp[6], tmp[3]);
+            tmp[4].style.cursor = "pointer";
+            // console.log("log", newarr[0]);
+            newarr[0].classList.add("zj");
+            // console.log("S");
+            function start() {
+                // console.log("1111");
+                input.innerHTML = "";
+                tmp[4].style.cursor = "not-allowed";
+                tmp[4].onclick = null;
+                var count = 0;
+                var cishu = 0;
+                // console.log(index);
+                timer = setInterval(function () {
+                    cishu++;
+                    var index = Math.floor(Math.random() * newarr.length * 10 + 14);
+                    newarr.forEach(function (e, i) {
+                        newarr[i].classList.remove("zj");
+                    })
+                    newarr[count].classList.add("zj");
+
+                    if (cishu > index) {
+                        tmp[4].onclick = start;
+                        tmp[4].style.cursor = "pointer";
+                        newarr[count].classList.add("zj");
+                        clearInterval(timer);
+                        input.innerHTML = "恭喜您中了" + newarr[count].innerHTML + "!!!";
+                    }
+                    // console.log(cishu, index)
+                    if (count == 7) {
+                        count = -1;
+                    }
+                    count++;
+                }, 66)
+            }
+            tmp[4].onclick = start;
+            // console.log("44", tmp[4]);
+        }
+        // 开始
         arr.forEach(function (e, i) {
             var node = document.createElement("div");
             node.innerHTML = e;
@@ -86,6 +169,7 @@
         tmp[4].style.cursor = "pointer";
         newarr[0].classList.add("zj");
         function start() {
+            // console.log("kew")
             input.innerHTML = "";
             tmp[4].style.cursor = "not-allowed";
             tmp[4].onclick = null;
