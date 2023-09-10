@@ -1,0 +1,1 @@
+import{r as e,o,c as s}from"./index-77c538a5.js";const t={class:"return"},n={__name:"purchaseReturn",setup(a){return e("Hello"),e([{shopName:"潭村",shopID:"123"},{shopName:"杨基",shopID:"456"}]),e(0),e([{goodName:"奶茶",goodID:"1",isActive:0},{goodName:"奶茶",goodID:"1",isActive:1},{goodName:"奶茶",goodID:"1",isActive:0}]),(c,r)=>(o(),s("div",t," 采购退货 "))}};export{n as default};
